@@ -307,7 +307,7 @@
                           name="nombre"
                           type="text"
                           class="form-control"
-                          id="nombre"
+                          id="form-name"
                           placeholder="Tu nombre..."
                           required=""
                         />
@@ -319,7 +319,7 @@
                           name="email"
                           type="text"
                           class="form-control"
-                          id="email"
+                          id="form-email"
                           placeholder="Tu email..."
                           required=""
                         />
@@ -331,7 +331,7 @@
                           name="asunto"
                           type="text"
                           class="form-control"
-                          id="asunto"
+                          id="form-subject"
                           placeholder="Asunto"
                           required=""
                         />
@@ -343,7 +343,7 @@
                           name="mensaje"
                           rows="6"
                           class="form-control"
-                          id="mensaje"
+                          id="form-message"
                           placeholder="Cuanta más información des, mejor..."
                           required=""
                         ></textarea>
@@ -370,7 +370,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="assets/js/isotope.min.js"></script>
     <script src="assets/js/owl-carousel.js"></script>
     <script src="assets/js/lightbox.js"></script>
@@ -441,10 +440,10 @@
         event.preventDefault();
 
         const params = {
-          nombre: document.getElementById("nombre").value,
-          email: document.getElementById("email").value,
-          asunto:document.getElementById("asunto").value,
-          mensaje: document.getElementById("mensaje").value
+          nombre: document.getElementById("form-name").value,
+          email: document.getElementById("form-email").value,
+          asunto:document.getElementById("form-subject").value,
+          mensaje: document.getElementById("form-message").value
         };
 
         emailjs.send("service_gblq4fs","template_la46mur", params)
