@@ -307,7 +307,7 @@
                           name="nombre"
                           type="text"
                           class="form-control"
-                          id="name"
+                          id="nombre"
                           placeholder="Tu nombre..."
                           required=""
                         />
@@ -331,7 +331,7 @@
                           name="asunto"
                           type="text"
                           class="form-control"
-                          id="subject"
+                          id="asunto"
                           placeholder="Asunto"
                           required=""
                         />
@@ -343,7 +343,7 @@
                           name="mensaje"
                           rows="6"
                           class="form-control"
-                          id="message"
+                          id="mensaje"
                           placeholder="Cuanta más información des, mejor..."
                           required=""
                         ></textarea>
@@ -441,13 +441,13 @@
         event.preventDefault();
 
         const params = {
-          nombre: document.getElementById("name").value,
+          nombre: document.getElementById("nombre").value,
           email: document.getElementById("email").value,
-          asunto:document.getElementById("subjet").value,
-          mensaje: document.getElementById("message").value
+          asunto:document.getElementById("asunto").value,
+          mensaje: document.getElementById("mensaje").value
         };
 
-        emailjs.send("service_gblq4fs", "formContacto", "template_la46mur", params)
+        emailjs.send("service_gblq4fs","template_la46mur", params)
         .then(function(response){
 
             document.getElementById("estado").innerText = 
