@@ -1,18 +1,3 @@
-/*!
- * Lightbox v2.10.0
- * by Lokesh Dhakar
- *
- * More info:
- * http://lokeshdhakar.com/projects/lightbox2/
- *
- * Copyright 2007, 2018 Lokesh Dhakar
- * Released under the MIT license
- * https://github.com/lokesh/lightbox2/blob/master/LICENSE
- *
- * @preserve
- */
-
-// Uses Node, AMD or browser globals to create a module.
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
@@ -38,8 +23,6 @@
     this.option(options);
   }
 
-  // Descriptions of all options available on the demo site:
-  // http://lokeshdhakar.com/projects/lightbox2/index.html#options
   Lightbox.defaults = {
     albumLabel: 'Image %1 of %2',
     alwaysShowNavOnTouchDevices: false,
@@ -53,14 +36,7 @@
     showImageNumberLabel: true,
     wrapAround: false,
     disableScrolling: false,
-    /*
-    Sanitize Title
-    If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
-    This will free you to add html tags, such as links, in the caption.
 
-    If the caption data is user submitted or from some other untrusted source, then set this to true
-    to prevent xss and other injection attacks.
-     */
     sanitizeTitle: false
   };
 
@@ -81,8 +57,6 @@
     });
   };
 
-  // Loop through anchors and areamaps looking for either data-lightbox attributes or rel attributes
-  // that contain 'lightbox'. When these are clicked, start lightbox.
   Lightbox.prototype.enable = function() {
     var self = this;
     $('body').on('click', 'a[rel^=lightbox], area[rel^=lightbox], a[data-lightbox], area[data-lightbox]', function(event) {
@@ -91,8 +65,7 @@
     });
   };
 
-  // Build html for the lightbox and the overlay.
-  // Attach event handlers to the new DOM elements. click click click
+
   Lightbox.prototype.build = function() {
     if ($('#lightbox').length > 0) {
         return;
@@ -109,7 +82,6 @@
     this.$image          = this.$lightbox.find('.lb-image');
     this.$nav            = this.$lightbox.find('.lb-nav');
 
-    // Store css values for future lookup
     this.containerPadding = {
       top: parseInt(this.$container.css('padding-top'), 10),
       right: parseInt(this.$container.css('padding-right'), 10),
@@ -162,19 +134,7 @@
       return false;
     });
 
-    /*
-      Show context menu for image on right-click
 
-      There is a div containing the navigation that spans the entire image and lives above of it. If
-      you right-click, you are right clicking this div and not the image. This prevents users from
-      saving the image or using other context menu actions with the image.
-
-      To fix this, when we detect the right mouse button is pressed down, but not yet clicked, we
-      set pointer-events to none on the nav div. This is so that the upcoming right-click event on
-      the next mouseup will bubble down to the image. Once the right-click/contextmenu event occurs
-      we set the pointer events back to auto for the nav div so it can capture hover and left-click
-      events as usual.
-     */
     this.$nav.on('mousedown', function(event) {
       if (event.which === 3) {
         self.$nav.css('pointer-events', 'none');
@@ -194,7 +154,7 @@
     });
   };
 
-  // Show overlay and lightbox. If the image is part of a set, add siblings to album array.
+
   Lightbox.prototype.start = function($link) {
     var self    = this;
     var $window = $(window);
@@ -218,7 +178,7 @@
       });
     }
 
-    // Support both data-lightbox attribute and rel attribute implementations
+
     var dataLightboxValue = $link.attr('data-lightbox');
     var $links;
 
@@ -423,8 +383,7 @@
   Lightbox.prototype.updateDetails = function() {
     var self = this;
 
-    // Enable anchor clicks in the injected caption html.
-    // Thanks Nate Wright for the fix. @https://github.com/NateWr
+
     if (typeof this.album[this.currentImageIndex].title !== 'undefined' &&
       this.album[this.currentImageIndex].title !== '') {
       var $caption = this.$lightbox.find('.lb-caption');
